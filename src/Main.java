@@ -4,7 +4,7 @@ public class Main {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
 
-        String username = "goktugibolar", password = "123456qW.";
+        String username = "goktug", password = "123456qW.";
 
 
         System.out.print("Username : " );
@@ -19,36 +19,38 @@ public class Main {
                 break;
             }
             else{
-                System.out.println("Wrong username or password!\n"
-                +"1 - Reset password\n"
-                +"2 - try again");
+                if(usernameInput.equals(username)){
+                    System.out.println("Wrong password!\n"
+                    +"Would you like to reset your password (yes or no): ");
+                    String input = sc.nextLine();
 
-                System.out.print("Choose process :");
-                int input = sc.nextInt();
 
-                if(input == 1){
-                    if(usernameInput.equals(username)){
-                        System.out.print("Enter your new password :");
+                    if(input.equals("yes")){
+                        System.out.print("New password : ");
                         String newPassword = sc.nextLine();
 
                         if(newPassword.equals(password)){
-                            System.out.println("New password can't be the same as the old one!");
-                            break;
+                            System.out.println("New password can not be same as the old password!");
+                            continue;
                         }
                         else{
                             password = newPassword;
-                        }   
+                            System.out.println("Password changed!");
+                            System.out.println("New Password : " + password);
+                            break;
+                        }
+                    }
+                    else if(input.equals("no")){
+                       break;
                     }
                     else{
-                        System.out.println("Username doesn't match!");
-                        continue;
+                        System.out.println("Unvalid process!");
                     }
-                }
-                else if(input == 2){
-                    continue; 
+
                 }
                 else{
-                    System.out.println("Unvalid process!");
+                    System.out.println("Wrong username!");
+                    break;   
                 }
             }
         }
